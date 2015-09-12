@@ -1,22 +1,37 @@
 #! /bin/bash
 
-if [ `file --mime-type -b`==audio/x-wav ]; then
-  echo "input 1 is an audio file"
+#
+# Ciska Vriezenga © 2015
+#
+
+TARGETDIR=trimmed_wavs
+
+if [ -d $TARGETDIR ] ; then
+  echo "$TARGETDIR directory exists"
+else
+  echo "creating $TARGETDIR directory"
+  mkdir $TARGETDIR
 fi
 
-if [ $# -lt 3 ]; then
-  echo "$0: geef alsjeblieft start trim en lengte trim op"
+if [ $# -lt 2 ]; then
+  echo "$0: please enter a starttime and length"
   exit
 else
-  FILENAME=$1
-  NEWNAME=`basename "$1" .wav`_trimmed.wav
-  NEWNAME2=`basename "$1" .wav`_faded.wav  
-  echo "NEWNAME: $NEWNAME"
-  STARTTIJD=$2
-  echo "starttijd: $STARTTIJD"
-  LENGTE=$3
-  echo "lengte: " $LENGTE
-fi                  
+  #communicate starttime and length
+  STARTTIME=$1
+  echo "starttime: $STARTTIME"
+  LENGTH=$2
+  echo "length: " $LENGTH
 
-`sox $FILENAME $NEWNAME  trim $STARTTIJD $LENGTE`
-`sox $NEWNAME $NEWNAME2 fade 0.1 $LENGTE` 
+ 
+
+  for f in *.wav; do  
+    TRIMMEDFILENAME=`basename $f .wav`trimmed.wav     
+    `sox $f ${TARGETDIR}/$TRIMMEDFILENAME trim $STARTTIME $LENGTH`
+    `sox $f ${TARGETDIR}/$TRIMMEDFILENAME fade 0.1 $LENGTH`
+
+  done
+fi
+
+
+
