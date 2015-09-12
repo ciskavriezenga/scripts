@@ -1,2 +1,2 @@
 # scripts
-backup of scripts
+backup of scripts and color schemes
