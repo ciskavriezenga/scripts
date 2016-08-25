@@ -1,0 +1,178 @@
+/*
+ * Your Stylesheet
+ *
+ * This stylesheet is loaded when Atom starts up and is reloaded automatically
+ * when it is changed and saved.
+ *
+ * Add your own CSS or Less to fully customize Atom.
+ * If you are unfamiliar with Less, you can read more about it here:
+ * http://lesscss.org
+ */
+
+ @panelColor: rgb(10, 10, 10);
+ @editorBgc:  rgb(17, 25, 30);
+ @editorBgcDark: rgb(42.2, 50.2, 55.2);
+ @editorBgcLight: rgb(168, 186, 191);
+ @ccRedDarkGrey: #704343;
+ @ccRedDark:  #cc0000;
+ @ccRed: #ff1a1a;
+ @ccRedLight: #ff8080;
+ @ccOrange: rgb(200, 100, 0);
+ @ccOrangeLight: #de935f;
+ @ccYellow: #dede5e;
+ @ccOrangeLightGrey: #d0ad95;
+ @ccAquaDark: rgb(0, 153, 153);
+ @ccAqua: rgb(51, 204, 204);
+ @ccAquaGrey: #66cccc;
+ @ccGrey: #a3a8a5;
+ @ccGreyLight: #c5c8c6;
+ @ccBlueXDark: rgb(6, 33, 45);
+ @ccBlueDark: rgb(9, 50, 68);
+ @ccBlueDarkGrey: #3e6574;
+ @ccBlue: rgb(29, 167, 226);
+ @ccBlueGrey: #5391ac;
+ @ccBlueLight: 	rgb(133, 197, 224);
+ @ccBlueLightGrey: #90c0d5;
+
+
+
+atom-text-editor::shadow .gutter {
+  min-width: 0.25em;
+  background-color: @ccBlueXDark;
+}
+
+atom-text-editor::shadow .gutter .custom-decorations {
+  min-width: 0.6em;
+  background-color: @editorBgc !important;
+}
+
+
+
+ atom-text-editor::shadow .gutter .line-numbers {
+  text-align: left !important;
+  max-width: 3.5em;
+  min-width: 3.5em;
+  font-size:10px !important;
+  color: white;
+  margin-left: -11px;
+  padding: 0 !important;
+}
+
+.tool-bar.tool-bar-24px.tool-bar-vertical {
+
+}
+
+atom-panel.left .tool-bar.tool-bar-24px {
+  width: 30px
+}
+
+ atom-panel.left .tool-bar.tool-bar-24px .btn{
+    height: 40px;
+    width: 20px;
+}
+
+// style the background color of the tree view
+.tree-view {
+  background-color: @panelColor;
+}
+
+
+// style the background and foreground colors on the atom-text-editor-element itself
+atom-text-editor::shadow {
+  background-color: @editorBgc;
+  .lines {
+    font-size: 11px;
+    font-style:normal;
+  }
+  .line {
+
+  }
+  .scroll-view {
+
+  }
+
+  /* =============================================================== */
+  /* ======================= general styling ======================= */
+  /* =============================================================== */
+
+
+  .string {
+    color:  @ccBlueLightGrey;
+  }
+  .comment {
+    color: #7F7F5F;
+
+  }
+
+  /* =============================================================== */
+  /* ========================== js styling ========================= */
+  /* =============================================================== */
+
+  span.variable.other.property.js {
+    color: @ccGreyLight;
+  }
+
+
+  .meta.any.tag.html > span {
+    color: @ccGreyLight;
+  }
+
+
+
+/* =============================================================== */
+/* ====================== c language styling ===================== */
+/* =============================================================== */
+
+  .preprocessor > span {
+    color: @ccGreyLight;
+  }
+  .preprocessor > .entity {
+    color: @ccGreyLight;
+  }
+  .preprocessor.c .string {
+    color:  @ccBlueLightGrey;
+  }
+
+  .storage {
+    color: @ccOrangeLight;
+  }
+  .numeric, .constant {
+    color: @ccBlue;
+  }
+
+
+
+  .function-call .any-method, .entity.name.function{
+    color: @ccOrangeLightGrey;// @ccBlueLightGrey;
+  }
+
+  .keyword.control, .this {
+    color: @ccGrey;
+  }
+}
+
+
+/* =================================================================== */
+
+
+
+
+atom-text-editor::shadow .wrap-guide {
+  width: 1px;
+  background-color: grey;
+}
+
+atom-pane-container atom-pane-axis.horizontal > atom-pane-resize-handle {
+    margin-left: 0px;
+}
+
+
+li.tab.sortable  {
+  background-color: @panelColor;
+  color: @editorBgcLight;
+}
+
+li.tab.sortable.active  {
+  background-color: @editorBgc !important;
+  color: @ccOrange;
+}
